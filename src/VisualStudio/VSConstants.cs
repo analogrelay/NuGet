@@ -29,5 +29,6 @@ namespace NuGet.VisualStudio
 
         // HResults
         internal const int S_OK = 0;
+        internal const int S_FALSE = 1;
     }
 }

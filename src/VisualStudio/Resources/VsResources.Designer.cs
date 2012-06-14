@@ -450,6 +450,15 @@ namespace NuGet.VisualStudio.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Cannot deserialize &apos;{0}&apos; into a &apos;{1}&apos; object.
+        /// </summary>
+        public static string Packaging_CannotDeserialize {
+            get {
+                return ResourceManager.GetString("Packaging_CannotDeserialize", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to No project was specified..
         /// </summary>
         public static string ProjectNotSpecified {
@@ -491,6 +500,15 @@ namespace NuGet.VisualStudio.Resources {
         public static string RestartNow {
             get {
                 return ResourceManager.GetString("RestartNow", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to NuGet.
+        /// </summary>
+        public static string PropertyPage_Title {
+            get {
+                return ResourceManager.GetString("PropertyPage_Title", resourceCulture);
             }
         }
         

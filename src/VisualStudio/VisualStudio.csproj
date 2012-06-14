@@ -27,6 +27,7 @@
     <Compile Include="Extensions\ProjectSystemExtensions.cs" />
     <Compile Include="FallbackRepository.cs" />
     <Compile Include="DeleteOnRestart\IDeleteOnRestartManager.cs" />
+    <Compile Include="Guids.cs" />
     <Compile Include="IRegistryKey.cs" />
     <Compile Include="ISourceControlFileSystem.cs" />
     <Compile Include="IVsCommonOperations.cs" />
@@ -54,6 +55,11 @@
     <Compile Include="PackageRestore\PackagesMissingStatusEventArgs.cs" />
     <Compile Include="PackageSource\AggregatePackageSource.cs" />
     <Compile Include="PackageSource\IVsPackageSourceProvider.cs" />
+    <Compile Include="Packaging\IPackagingModelBuilder.cs" />
+    <Compile Include="Packaging\PackagingModel.cs" />
+    <Compile Include="Packaging\PackagingModelBuilder.cs" />
+    <Compile Include="Packaging\PackagingReference.cs" />
+    <Compile Include="Packaging\ProjectConfiguration.cs" />
     <Compile Include="PowershellScripts.cs" />
     <Compile Include="ProductUpdate\IProductUpdateService.cs" />
     <Compile Include="ProductUpdate\IProductUpdateSettings.cs" />
@@ -73,6 +79,17 @@
     <Compile Include="ProjectSystems\JsProjectSystem.cs" />
     <Compile Include="ProjectSystems\WindowsStoreProjectSystem.cs" />
     <Compile Include="ProjectSystems\WixProjectSystem.cs" />
+    <Compile Include="PropertyPage\IView.cs" />
+    <Compile Include="PropertyPage\ProjectPropertyPage.cs" />
+    <Compile Include="PropertyPage\ProjectPropertyPageView.xaml.cs">
+      <DependentUpon>ProjectPropertyPageView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PropertyPage\ProjectPropertyPageViewModel.cs" />
+    <Compile Include="PropertyPage\PropertyPageBase.cs" />
+    <Compile Include="PropertyPage\PropertyPageViewModel.cs" />
+    <Compile Include="PropertyPage\WpfPropertyPageBase.cs" />
+    <Compile Include="RecentRepository\IPersistencePackageMetadata.cs" />
+    <Compile Include="RecentRepository\RecentPackage.cs" />
     <Compile Include="RegistryKeyWrapper.cs" />
     <Compile Include="SkipAssemblyReferencesPackage.cs" />
     <Compile Include="SolutionFolderFileSystem.cs" />
@@ -185,6 +202,7 @@
       <EmbedInteropTypes>True</EmbedInteropTypes>
       <HintPath>..\..\..\..\..\..\Program Files (x86)\Common Files\Microsoft Shared\MSEnv\PublicAssemblies\VsWebSite.Interop.dll</HintPath>
     </Reference>
+    <Reference Include="WindowsFormsIntegration" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Extensions\ScriptExecutorExtensions.cs" />
@@ -268,6 +286,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="ProductUpdate\ProductUpdateBar.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PropertyPage\ProjectPropertyPageView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

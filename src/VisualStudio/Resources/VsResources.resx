@@ -347,4 +347,10 @@ Packages installed into Website projects will not be restored during build. Cons
   <data name="PackageRestoreSkipForSolution" xml:space="preserve">
     <value>Skipped reinstalling package '{0}' because the package does not exist in the package source.</value>
   </data>
+  <data name="PropertyPage_Title" xml:space="preserve">
+    <value>NuGet</value>
+  </data>
+  <data name="Packaging_CannotDeserialize" xml:space="preserve">
+    <value>Cannot deserialize '{0}' into a '{1}' object</value>
+  </data>
 </root>
