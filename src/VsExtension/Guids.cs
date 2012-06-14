@@ -4,6 +4,8 @@ namespace NuGet.Tools
 {
     static class GuidList
     {
+        public const string guidCSharpProjectTypeString = "{FAE04EC0-301F-11d3-BF4B-00C04F79EFBC}";
+        
         public const string guidNuGetPkgString = "F7D0E7A3-C60B-422A-BFAE-CEED36ADE7D2";
 
         public const string guidNuGetConsoleCmdSetString = "1E8A55F6-C18D-407F-91C8-94B02AE1CED6";
@@ -14,6 +16,9 @@ namespace NuGet.Tools
         // any project system that wants to load NuGet when its project opens needs to activate a UI context with this GUID
         public const string guidAutoLoadNuGetString = "65B1D035-27A5-4BBA-BAB9-5F61C1E2BC4A";
 
+        public static readonly Guid iidIUnknown = new Guid("00000000-0000-0000-C000-000000000046");
+        public static readonly Guid iidIPropertyPage = new Guid("B196B28D-BAB4-101A-B69C-00AA00341D07");
+        
         public static readonly Guid guidNuGetConsoleCmdSet = new Guid(guidNuGetConsoleCmdSetString);
         public static readonly Guid guidNuGetDialogCmdSet = new Guid(guidNuGetDialogCmdSetString);
         public static readonly Guid guidNuGetToolsGroupCmdSet = new Guid(guidNuGetToolsGroupString);
