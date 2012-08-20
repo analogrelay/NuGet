@@ -881,13 +881,16 @@ namespace NuGet.VisualStudio.Test
 
             return new PackageRestoreManager(
                 dte,
+                new BuildServicesManager(
+                    dte,
+                    solutionManager,
+                    fileSystemProvider,
+                    packageSourceProvider,
+                    packageRepositoryFactory,
+                    localCache),
                 solutionManager,
-                fileSystemProvider,
-                packageRepositoryFactory,
-                packageSourceProvider,
-                packageManagerFactory, 
+                packageManagerFactory,
                 new VsPackageInstallerEvents(),
-                localCache,
                 waitDialogFactory,
                 settings);
         }

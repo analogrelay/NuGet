@@ -326,4 +326,13 @@ Packages installed into Website projects will not be restored during build. Cons
   <data name="Packaging_CannotDeserialize" xml:space="preserve">
     <value>Cannot deserialize '{0}' into a '{1}' object</value>
   </data>
+  <data name="InstallBuildServicesConfirmation" xml:space="preserve">
+    <value>Are you sure you want to install the NuGet Build Services package into this solution?</value>
+  </data>
+  <data name="InstallBuildServicesWaitMessage" xml:space="preserve">
+    <value>Installing NuGet Build Services...</value>
+  </data>
+  <data name="SetProperty_NotAPropertyExpr" xml:space="preserve">
+    <value>Expression passed to SetProperty was not a property expression</value>
+  </data>
 </root>

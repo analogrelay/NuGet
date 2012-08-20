@@ -14,6 +14,7 @@
     <RunCodeAnalysis Condition="'$(EnableCodeAnalysis)'=='true'">true</RunCodeAnalysis>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="BuildServicesManager.cs" />
     <Compile Include="ExceptionHelper.cs" />
     <Compile Include="Extensibility\VsPackageUninstaller.cs" />
     <Compile Include="Extensibility\IVsPackageUninstaller.cs" />
@@ -23,6 +24,7 @@
     <Compile Include="Extensions\ProjectSystemExtensions.cs" />
     <Compile Include="FallbackRepository.cs" />
     <Compile Include="Guids.cs" />
+    <Compile Include="IBuildServicesManager.cs" />
     <Compile Include="IRegistryKey.cs" />
     <Compile Include="ISourceControlFileSystem.cs" />
     <Compile Include="IVsCommonOperations.cs" />
@@ -51,10 +53,12 @@
     <Compile Include="PackageSource\AggregatePackageSource.cs" />
     <Compile Include="PackageSource\IVsPackageSourceProvider.cs" />
     <Compile Include="Packaging\IPackagingModelBuilder.cs" />
+    <Compile Include="Packaging\IProjectPackagingManager.cs" />
     <Compile Include="Packaging\PackagingModel.cs" />
     <Compile Include="Packaging\PackagingModelBuilder.cs" />
     <Compile Include="Packaging\PackagingReference.cs" />
     <Compile Include="Packaging\ProjectConfiguration.cs" />
+    <Compile Include="Packaging\ProjectPackagingManager.cs" />
     <Compile Include="PowershellScripts.cs" />
     <Compile Include="ProductUpdate\IProductUpdateService.cs" />
     <Compile Include="ProductUpdate\IProductUpdateSettings.cs" />
@@ -88,6 +92,8 @@
     <Compile Include="SkipAssemblyReferencesPackage.cs" />
     <Compile Include="SolutionFolderFileSystem.cs" />
     <Compile Include="TfsSourceControlFileSystemProviderPicker.cs" />
+    <Compile Include="UI\IUIService.cs" />
+    <Compile Include="UI\VsUIService.cs" />
     <Compile Include="Utility\PathHelper.cs" />
     <Compile Include="Utility\SourceControlHelper.cs" />
     <Compile Include="Utility\UriHelper.cs" />
@@ -111,6 +117,8 @@
     <Compile Include="VsTemplateWizardPackageInfo.cs" />
     <Compile Include="VsWebsiteHandler.cs" />
     <Compile Include="WindowSettingsManager.cs" />
+    <Compile Include="UI\BooleanToBrushConverter.cs" />
+    <Compile Include="UI\RelayCommand.cs" />
     <EmbeddedResource Include="..\..\Common\CommonResources.resx">
       <Link>Common\CommonResources.resx</Link>
       <DependentUpon>CommonResources.cs</DependentUpon>

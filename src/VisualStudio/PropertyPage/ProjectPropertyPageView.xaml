@@ -3,13 +3,35 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:pp="clr-namespace:NuGet.VisualStudio.PropertyPage"
+             xmlns:local="clr-namespace:NuGet.VisualStudio.UI"
              mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="300" DataContext="{Binding RelativeSource={RelativeSource Self}, Path=ViewModel}">
-    <StackPanel Orientation="Vertical">
-        <TextBlock Text="THIS. IS. NuGet!" />
-        <StackPanel Orientation="Horizontal">
-            <TextBlock Text="Configuration:" />
-            <TextBlock Text="{Binding ConfigurationNames}" />
+             d:DataContext="{d:DesignInstance Type=pp:ProjectPropertyPageViewModel, IsDesignTimeCreatable=True}"
+             d:DesignHeight="500" d:DesignWidth="500" DataContext="{Binding RelativeSource={RelativeSource Self}, Path=ViewModel}">
+    <UserControl.Resources>
+        <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
+        <SolidColorBrush x:Key="bg_BuildServicesState_Installed" Color="#FF8CBF26"/>
+        <SolidColorBrush x:Key="bg_BuildServicesState_NotInstalled" Color="#FFF09609"/>
+        <SolidColorBrush x:Key="fg_BuildServicesState_Installed" Color="Black"/>
+        <SolidColorBrush x:Key="fg_BuildServicesState_NotInstalled" Color="Black" />
+        <local:BooleanToBrushConverter x:Key="bg_BuildServicesState" TrueBrush="{StaticResource bg_BuildServicesState_Installed}" FalseBrush="{StaticResource bg_BuildServicesState_NotInstalled}" />
+        <local:BooleanToBrushConverter x:Key="fg_BuildServicesState" TrueBrush="{StaticResource fg_BuildServicesState_Installed}" FalseBrush="{StaticResource fg_BuildServicesState_NotInstalled}" />
+    </UserControl.Resources>
+    <DockPanel Margin="10">
+        <Border Padding="5" DockPanel.Dock="Top" Margin="0,0,0,5" Background="{Binding BuildServicesInstalled, Converter={StaticResource bg_BuildServicesState}, Mode=OneWay}">
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Foreground="{Binding BuildServicesInstalled, Converter={StaticResource fg_BuildServicesState}, Mode=OneWay}" VerticalAlignment="Center">NuGet Build Services are: </TextBlock>
+                <StackPanel Orientation="Horizontal" Visibility="{Binding BuildServicesNotInstalled, Converter={StaticResource BooleanToVisibilityConverter}, Mode=OneWay}">
+                    <TextBlock Foreground="{Binding BuildServicesInstalled, Converter={StaticResource fg_BuildServicesState}, Mode=OneWay}" Margin="5,0,0,0" VerticalAlignment="Center">Not Installed</TextBlock>
+                    <Button VerticalAlignment="Center" Margin="5,0,0,0" Padding="2">Install</Button>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Visibility="{Binding BuildServicesInstalled, Converter={StaticResource BooleanToVisibilityConverter}, Mode=OneWay}">
+                    <TextBlock Foreground="{Binding BuildServicesInstalled, Converter={StaticResource fg_BuildServicesState}, Mode=OneWay}" Margin="5,0,0,0" VerticalAlignment="Center">Installed</TextBlock>
+                </StackPanel>
+            </StackPanel>
+        </Border>
+        <StackPanel Orientation="Vertical">
+            <CheckBox IsChecked="{Binding CreatePackage}">Create a NuGet Package from this Project.</CheckBox>
         </StackPanel>
-    </StackPanel>
+    </DockPanel>
 </UserControl>

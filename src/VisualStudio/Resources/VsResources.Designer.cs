@@ -286,6 +286,24 @@ namespace NuGet.VisualStudio.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to install the NuGet Build Services package into this solution?.
+        /// </summary>
+        public static string InstallBuildServicesConfirmation {
+            get {
+                return ResourceManager.GetString("InstallBuildServicesConfirmation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Installing NuGet Build Services....
+        /// </summary>
+        public static string InstallBuildServicesWaitMessage {
+            get {
+                return ResourceManager.GetString("InstallBuildServicesWaitMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to &apos;{0}&apos; already installed..
         /// </summary>
         public static string Log_PackageAlreadyInstalled {
@@ -464,6 +482,15 @@ namespace NuGet.VisualStudio.Resources {
         public static string RestoreButtonLabel {
             get {
                 return ResourceManager.GetString("RestoreButtonLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Expression passed to SetProperty was not a property expression.
+        /// </summary>
+        public static string SetProperty_NotAPropertyExpr {
+            get {
+                return ResourceManager.GetString("SetProperty_NotAPropertyExpr", resourceCulture);
             }
         }
         
