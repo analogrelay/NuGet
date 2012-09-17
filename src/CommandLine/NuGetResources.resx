@@ -507,4 +507,7 @@
   <data name="MergeCommandDependencySetConflict" xml:space="preserve">
     <value>Both packages define a dependency set targetting '{0}'. Individual dependency sets cannot be merged at this time.</value>
   </data>
+  <data name="MergeCommandFileConflict" xml:space="preserve">
+    <value>Both packages define the '{0}' file. File contents cannot be merged at this time.</value>
+  </data>
 </root>

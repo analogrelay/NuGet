@@ -520,6 +520,15 @@ namespace NuGet {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Both packages define the &apos;{0}&apos; file. File contents cannot be merged at this time..
+        /// </summary>
+        internal static string MergeCommandFileConflict {
+            get {
+                return ResourceManager.GetString("MergeCommandFileConflict", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Missing option value for: &apos;{0}&apos;.
         /// </summary>
         internal static string MissingOptionValueError {

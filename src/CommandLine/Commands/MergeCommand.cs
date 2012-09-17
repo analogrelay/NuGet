@@ -16,8 +16,12 @@ namespace NuGet.Commands
         UsageExampleResourceName = "MergeCommandUsageExamples", MinArgs = 3, MaxArgs = 3)]
     public class MergeCommand : Command
     {
+        private bool _conflict = false;
+
         public override void ExecuteCommand()
         {
+            _conflict = false;
+
             // Verify arguments
             string masterFile = Arguments[0];
             if (!File.Exists(masterFile))
@@ -41,7 +45,10 @@ namespace NuGet.Commands
             PackageBuilder outputPackage = new PackageBuilder();
             
             // Merge Metadata and files
-            if (MergeMetadata(masterPackage, secondaryPackage, outputPackage) && MergeFiles(masterPackage, secondaryPackage, outputPackage))
+            MergeMetadata(masterPackage, secondaryPackage, outputPackage);
+            MergeFiles(masterPackage, secondaryPackage, outputPackage);
+
+            if (!_conflict)
             {
                 // Save output package
                 using (Stream strm = File.Open(outputFile, FileMode.OpenOrCreate, FileAccess.ReadWrite, FileShare.None))
@@ -52,12 +59,27 @@ namespace NuGet.Commands
             }
         }
 
-        private bool MergeFiles(ZipPackage masterPackage, ZipPackage secondaryPackage, PackageBuilder outputPackage)
+        private void MergeFiles(ZipPackage masterPackage, ZipPackage secondaryPackage, PackageBuilder outputPackage)
         {
-            throw new NotImplementedException();
+            // Take all files from master and put them in the package
+            outputPackage.Files.AddRange(masterPackage.GetFiles());
+
+            // Take all files from the secondary package and add them, reporting an error if there's a conflict.
+            foreach (var file in secondaryPackage.GetFiles())
+            {
+                if (outputPackage.Files.Any(f => String.Equals(f.Path, file.Path, StringComparison.OrdinalIgnoreCase)))
+                {
+                    Console.WriteError(NuGetResources.MergeCommandFileConflict, file.Path);
+                    _conflict = true;
+                }
+                else
+                {
+                    outputPackage.Files.Add(file);
+                }
+            }
         }
 
-        private bool MergeMetadata(ZipPackage masterPackage, ZipPackage secondaryPackage, PackageBuilder outputPackage)
+        private void MergeMetadata(ZipPackage masterPackage, ZipPackage secondaryPackage, PackageBuilder outputPackage)
         {
             // Merge Dependency Sets. We don't support both input packages having dependency sets targetting the same framework
             outputPackage.DependencySets.AddRange(masterPackage.DependencySets);
@@ -66,7 +88,7 @@ namespace NuGet.Commands
                 if (outputPackage.DependencySets.Any(s => s.TargetFramework.Equals(secondarySet.TargetFramework)))
                 {
                     Console.WriteError(NuGetResources.MergeCommandDependencySetConflict, secondarySet.TargetFramework);
-                    return false;
+                    _conflict = true;
                 }
                 else
                 {
@@ -84,8 +106,8 @@ namespace NuGet.Commands
                 {
                     if (!Enumerable.SequenceEqual(matchingRef.SupportedFrameworks, secondaryRef.SupportedFrameworks))
                     {
-                        Console.WriteError(NuGetResources.MergeCommandDependencySetConflict, secondaryRef.AssemblyName);
-                        return false;
+                        Console.WriteError(NuGetResources.MergeCommandAssemblyReferenceConflict, secondaryRef.AssemblyName);
+                        _conflict = true;
                     }
                 }
                 else
@@ -93,7 +115,6 @@ namespace NuGet.Commands
                     outputPackage.FrameworkReferences.Add(secondaryRef);
                 }
             }
-
 
             CopyProperty(masterPackage, outputPackage, m => m.Authors);
             CopyProperty(masterPackage, outputPackage, m => m.Copyright);
@@ -110,7 +131,6 @@ namespace NuGet.Commands
             CopyProperty(masterPackage, outputPackage, m => m.Tags);
             CopyProperty(masterPackage, outputPackage, m => m.Title);
             CopyProperty(masterPackage, outputPackage, m => m.Version);
-            return true;
         }
 
         private void CopyProperty<T>(ZipPackage masterPackage, PackageBuilder outputPackage, Expression<Func<IPackageMetadata, T>> property)
