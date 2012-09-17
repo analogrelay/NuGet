@@ -492,4 +492,19 @@
   <data name="InstallCommandPackageRestoreConsentNotFound_trk" xml:space="preserve">
     <value>Paketi geri yükleme varsayýlan olarak devre dýþý. Ýzin vermek için Visual Studio Seçenekleri iletiþim kutusunu açýn, Package Manager  (Paket Yöneticisi) düðümünü týklatýn ve 'Allow NuGet to download missing packages during build' (NuGet'in derleme sýrasýnda eksik paketleri indirmesine izin ver) öðesini iþaretleyin. Ayrýca 'EnableNuGetPackageRestore' ortam deðiþkenini 'true' olarak ayarlayarak da izin verebilirsiniz.</value>
   </data>
+  <data name="ArgumentMustBePropertyExpression" xml:space="preserve">
+    <value>The '{0}' parameter must contain a property access expression as the top level expression in the tree</value>
+  </data>
+  <data name="FileWillBeOverwritten" xml:space="preserve">
+    <value>'{0}' exists and will be overwritten</value>
+  </data>
+  <data name="MergeCommandAssemblyReferenceConflict" xml:space="preserve">
+    <value>Both packages define a dependency on the framework assembly '{0}' but have different target frameworks for that dependency. Framework assembly references cannot be merged at this time.</value>
+  </data>
+  <data name="MergeCommandCannotFindSourceFile" xml:space="preserve">
+    <value>Cannot find source package file: '{0}'</value>
+  </data>
+  <data name="MergeCommandDependencySetConflict" xml:space="preserve">
+    <value>Both packages define a dependency set targetting '{0}'. Individual dependency sets cannot be merged at this time.</value>
+  </data>
 </root>

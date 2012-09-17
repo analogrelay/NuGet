@@ -416,4 +416,16 @@ nuget update -Self</value>
   <data name="InstallCommandRequireConsent" xml:space="preserve">
     <value>Checks if package restore consent is granted before installing a package.</value>
   </data>
+  <data name="MergeCommandDescription" xml:space="preserve">
+    <value>Merges two NuGet Packages in to a single package file, combining files but leaving metadata unchanged.</value>
+  </data>
+  <data name="MergeCommandUsageDescription" xml:space="preserve">
+    <value>Specify the two package files to merge and the name of the output file to create.</value>
+  </data>
+  <data name="MergeCommandUsageExamples" xml:space="preserve">
+    <value>nuget merge MyLibrary.WinRT.1.0.nupkg MyLibrary.NetFx45.1.0.nupkg MyLibrary.1.0.nupkg</value>
+  </data>
+  <data name="MergeCommandUsageSummary" xml:space="preserve">
+    <value>&lt;package file 1&gt; &lt;package file 2&gt; &lt;output package file&gt; [options]</value>
+  </data>
 </root>
