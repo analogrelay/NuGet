@@ -493,38 +493,11 @@ namespace NuGet {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Both packages define a dependency on the framework assembly &apos;{0}&apos; but have different target frameworks for that dependency. Framework assembly references cannot be merged at this time..
-        /// </summary>
-        internal static string MergeCommandAssemblyReferenceConflict {
-            get {
-                return ResourceManager.GetString("MergeCommandAssemblyReferenceConflict", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Cannot find source package file: &apos;{0}&apos;.
         /// </summary>
         internal static string MergeCommandCannotFindSourceFile {
             get {
                 return ResourceManager.GetString("MergeCommandCannotFindSourceFile", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Both packages define a dependency set targetting &apos;{0}&apos;. Individual dependency sets cannot be merged at this time..
-        /// </summary>
-        internal static string MergeCommandDependencySetConflict {
-            get {
-                return ResourceManager.GetString("MergeCommandDependencySetConflict", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Both packages define the &apos;{0}&apos; file. File contents cannot be merged at this time..
-        /// </summary>
-        internal static string MergeCommandFileConflict {
-            get {
-                return ResourceManager.GetString("MergeCommandFileConflict", resourceCulture);
             }
         }
         

@@ -95,6 +95,7 @@
     <Compile Include="NETPortable\NetPortableProfile.cs" />
     <Compile Include="NETPortable\NetPortableProfileCollection.cs" />
     <Compile Include="NETPortable\NetPortableProfileTable.cs" />
+    <Compile Include="PackageMerger.cs" />
     <Compile Include="PackageRestoreConsent.cs" />
     <Compile Include="Packages\LocalPackage.cs" />
     <Compile Include="Packages\UnzippedPackage.cs" />

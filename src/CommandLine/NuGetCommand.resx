@@ -428,4 +428,7 @@ nuget update -Self</value>
   <data name="MergeCommandUsageSummary" xml:space="preserve">
     <value>&lt;package file 1&gt; &lt;package file 2&gt; &lt;output package file&gt; [options]</value>
   </data>
+  <data name="MergeCommandNewPackageIdDescription" xml:space="preserve">
+    <value>The ID of the merged package.</value>
+  </data>
 </root>

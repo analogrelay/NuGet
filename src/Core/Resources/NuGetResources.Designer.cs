@@ -529,6 +529,24 @@ namespace NuGet.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The package being merged defines a dependency on the framework assembly &apos;{0}&apos; but has different target frameworks for that dependency. Framework assembly references cannot be merged at this time..
+        /// </summary>
+        internal static string MergerAssemblyReferenceConflict {
+            get {
+                return ResourceManager.GetString("MergerAssemblyReferenceConflict", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The package being merged in defines the &apos;{0}&apos; file, which is already present in the output package. File contents cannot be merged at this time..
+        /// </summary>
+        internal static string MergerFileConflict {
+            get {
+                return ResourceManager.GetString("MergerFileConflict", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Framework name is missing..
         /// </summary>
         internal static string MissingFrameworkName {

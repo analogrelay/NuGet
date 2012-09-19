@@ -373,4 +373,10 @@
   <data name="ErrorReadingPackage" xml:space="preserve">
     <value>Unable to read package from path '{0}'.</value>
   </data>
+  <data name="MergerAssemblyReferenceConflict" xml:space="preserve">
+    <value>The package being merged defines a dependency on the framework assembly '{0}' but has different target frameworks for that dependency. Framework assembly references cannot be merged at this time.</value>
+  </data>
+  <data name="MergerFileConflict" xml:space="preserve">
+    <value>The package being merged in defines the '{0}' file, which is already present in the output package. File contents cannot be merged at this time.</value>
+  </data>
 </root>
