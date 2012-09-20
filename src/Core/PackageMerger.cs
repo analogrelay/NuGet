@@ -61,16 +61,25 @@ namespace NuGet
 
         private void MergeDependencySets(IPackage package)
         {
-            foreach (var newSet in package.DependencySets)
+            if (package.DependencySets != null)
             {
-                var existingSet = DependencySets.Where(s => s.TargetFramework.Equals(newSet.TargetFramework)).FirstOrDefault();
-                if (existingSet != null)
+                foreach (var newSet in package.DependencySets)
                 {
-                    existingSet.Dependencies.AddRange(newSet.Dependencies);
-                }
-                else
-                {
-                    DependencySets.Add(newSet);
+                    var existingSet = DependencySets.Where(s => s.TargetFramework.Equals(newSet.TargetFramework)).FirstOrDefault();
+                    if (existingSet != null)
+                    {
+                        var replacementSet = new PackageDependencySet(
+                            existingSet.TargetFramework,
+                            Enumerable.Concat(
+                                existingSet.Dependencies,
+                                newSet.Dependencies));
+                        DependencySets.Remove(existingSet);
+                        DependencySets.Add(replacementSet);
+                    }
+                    else
+                    {
+                        DependencySets.Add(newSet);
+                    }
                 }
             }
         }
@@ -78,23 +87,26 @@ namespace NuGet
         private void MergeFrameworkReferences(IPackage package)
         {
             // Merge Framework Assembly References. We don't support assembly references having mismatched supported frameworks
-            foreach (var secondaryRef in package.FrameworkAssemblies)
+            if (package.FrameworkAssemblies != null)
             {
-                var matchingRef = FrameworkReferences.FirstOrDefault(
-                    s => String.Equals(s.AssemblyName, secondaryRef.AssemblyName, StringComparison.OrdinalIgnoreCase));
-                if (matchingRef != null)
+                foreach (var secondaryRef in package.FrameworkAssemblies)
                 {
-                    if (!Enumerable.SequenceEqual(matchingRef.SupportedFrameworks, secondaryRef.SupportedFrameworks))
+                    var matchingRef = FrameworkReferences.FirstOrDefault(
+                        s => String.Equals(s.AssemblyName, secondaryRef.AssemblyName, StringComparison.OrdinalIgnoreCase));
+                    if (matchingRef != null)
                     {
-                        _conflicts.Add(String.Format(
-                            CultureInfo.CurrentCulture,
-                            NuGetResources.MergerAssemblyReferenceConflict,
-                            secondaryRef.AssemblyName));
+                        if (!Enumerable.SequenceEqual(matchingRef.SupportedFrameworks, secondaryRef.SupportedFrameworks))
+                        {
+                            _conflicts.Add(String.Format(
+                                CultureInfo.CurrentCulture,
+                                NuGetResources.MergerAssemblyReferenceConflict,
+                                secondaryRef.AssemblyName));
+                        }
                     }
-                }
-                else
-                {
-                    FrameworkReferences.Add(secondaryRef);
+                    else
+                    {
+                        FrameworkReferences.Add(secondaryRef);
+                    }
                 }
             }
         }
