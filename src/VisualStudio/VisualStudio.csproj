@@ -88,8 +88,6 @@
     <Compile Include="PropertyPage\PropertyPageBase.cs" />
     <Compile Include="PropertyPage\PropertyPageViewModel.cs" />
     <Compile Include="PropertyPage\WpfPropertyPageBase.cs" />
-    <Compile Include="RecentRepository\IPersistencePackageMetadata.cs" />
-    <Compile Include="RecentRepository\RecentPackage.cs" />
     <Compile Include="RegistryKeyWrapper.cs" />
     <Compile Include="SkipAssemblyReferencesPackage.cs" />
     <Compile Include="SolutionFolderFileSystem.cs" />

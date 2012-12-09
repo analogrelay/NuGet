@@ -43,6 +43,7 @@ namespace NuGet.Tools
         typeof(ProjectPropertyPage),
         "NuGet",
         GuidList.guidCSharpProjectTypeString)]
+    [ProvideObject(typeof(ProjectPropertyPage))]
     [FontAndColorsRegistration(
         "Package Manager Console",
         NuGetConsole.Implementation.GuidList.GuidPackageManagerConsoleFontAndColorCategoryString,
@@ -67,7 +68,7 @@ namespace NuGet.Tools
         private OleMenuCommand _managePackageForSolutionDialogCommand;
         private OleMenuCommandService _mcs;
 
-        private IDisposable _propertyPageCookie;
+        //private IDisposable _propertyPageCookie;
 
         public NuGetPackage()
         {
@@ -148,7 +149,7 @@ namespace NuGet.Tools
         protected override void Dispose(bool disposing)
         {
             base.Dispose(disposing);
-            _propertyPageCookie.Dispose();
+            //_propertyPageCookie.Dispose();
         }
 
         /// <summary>
@@ -193,7 +194,7 @@ namespace NuGet.Tools
                 DeleteOnRestart.DeleteMarkedPackageDirectories();
             }
 
-            _propertyPageCookie = PropertyPageFactory.Register<ProjectPropertyPage>();
+            //_propertyPageCookie = PropertyPageFactory.Register<ProjectPropertyPage>();
         }
 
         private void AddMenuCommandHandlers()
